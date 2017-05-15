@@ -1,0 +1,33 @@
+Here is the Coding question for Intuit, please complete it and send it back with the JavaScript code.
+ 
+Retrieve the subreddits that are for ReactJS (see https://www.reddit.com/subreddits/search?q=reactjs) by using this API -https://www.reddit.com/subreddits/search.json?q=reactjs.
+ 
+Create a responsive HTML page that displays the subreddits retrieved from this API call in a table format. The columns of this table should be the 
+-title of the subreddit 
+-the number of subscribers, 
+-public description. 
+-Each data row should alternate between grey background and white background.
+ 
+Please also answer the following questions:
+•  What is a closure and when would you use it?
+It is a function within a function.  It is useful because the inner function can have access (read, write over, etc) the parameters and variables of the outer function.  A good use case of this would be creating object-like methods. I.e. Outer Function=Salary, Inner Functions=Raise, currentPay, etc. 
+
+•  What is the difference between event bubbling and event delegation?
+While there are a few differences, I'll only focus on what I consider to be the main differences, here.  Event bubbling is a browser feature, and handles events by "bubbling" from the bottom to the top. To expand on this, if you had an <span> tag within an <a> tag, and the <a> tag within the <body> tag, what would happen in the case of a triggered event would be that if the <span> tag didn't cancel the event, it would move on to the <a> tag, and so on, and so forth. 
+
+By contrast, event delegation is a technique built into jQuery libraries. With the example above, in event delegation, perhaps you set the page up so that the <body> is handling events on behalf of the <a> tags. 
+
+•  How do prototypes work in JavaScript?
+Prototypes are a lot like Java constructors. They are intended to be elaborated on in order to create a fully functioning object, but are nonetheless objects themselves, inheriting this property from the Object class.  They can behave like objects, and it's typical to set up a constructor method, much in the same way you do in Java. I.e. 
+
+function Cat( name, color, furType, breed ) {
+	this.catName = "name";
+	this.catColor = "color";
+	this.catFurType = "furType";
+	this.catBreed = "breed";
+}
+
+•  Loading my page is slow with 80 assets being loaded. How would you go about solving for performance? What are the best practices?
+This is sort of a tricky question, and depends on any company's individual strategy around this. I say that, given that best practice technique for HTTP/1.1 vs. HTTP/2 is now considered to be different.  As not every site is using HTTP/2 yet, I think probably the best answer would be to try and use the method that will still work for everyone, i.e. the technique that works best for most sites out there. In truth, some web service providers may not need to think of older browsers as their certainly going to be serving the kind of crowd that one can almost reliably say is up-to-date.  However, this hasn't been true in the eCommerce companies I have owrked for, which specialized in high-end retail, given that a notable percentage of our customers were still using quite outdated Windows OS.  
+
+When I was in school, we were told that bundling assets together (concatenating assets into one big file) was the best way to go.  I've since heard that concatenating a file should go to the wayside, with more and more users using SPDY or HTTP/2. I recently read an article that postulated that bundling assets into smaller related groups was the best way to go for HTTP/2, while still working well for HTTP/1.1.  Their claim was that it not only decreased latency, but also allowed for flexibility in browser cache managment. 

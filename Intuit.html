@@ -1,0 +1,94 @@
+<html>
+<meta>
+<head>
+
+<link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
+
+<style>
+	body {
+		margin: 0;
+		padding: 0;
+		font-family: "Helvetica", sans-serif;
+		background-color: #EDE4E8;
+    color: #0E4152;
+	}
+
+  h1 {
+    margin-bottom: 0;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 2%;
+    font-family: 'Arvo', serif;
+    color: #20218A;
+  }
+
+  h3 {
+    margin-top: 0;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-bottom: 2%;
+    padding-top: .5%;
+    font-family: 'Arvo', serif;
+    color: #20218A;
+  }
+
+  table {
+    margin: 0;
+    padding: 0;
+    margin-right: 2%;
+    margin-left: 2%;
+  }
+
+  table td {
+    padding: 1%;
+    min-width: 200px;
+    overflow: scroll;
+  }
+
+	#reddit-content tr:nth-child(even) {
+    background: #CED4D6;
+  }
+
+	#reddit-content tr:nth-child(odd) {
+    background: #FFF;
+  }
+</style>
+
+<script src="http://j.mp/jqymin"></script>
+
+</head>
+<body>
+	<h1>
+	 React JS Subreddit Table
+	</h1>
+
+  <h3>
+    By: Courtney Gee
+  </h3>
+
+  <table cellpadding="0" cellspacing="0" id="reddit-content">
+  </table>
+
+
+  <script>
+    $.getJSON(
+      "https://www.reddit.com/subreddits/search.json?q=reactjs",
+      function redditData(data)
+      {
+        $.each(
+          data.data.children.slice(0, 10),
+          function (i, post) {
+            $("#reddit-content").append( '<tr> <td>' + post.data.title + '</td> <td>' + post.data.subscribers + '</td> <td>' + post.data.public_description + '</td> <td> </tr>');
+          }
+        )
+      }
+    )
+    /* This was used for testing, so I could be sure information was being pulled in successfully and correctly! 
+    .success(function() { alert("second success"); })
+    .error(function() { alert("error"); })
+    .complete(function() { alert("complete");}
+    );
+    */
+	</script>
+</body>
+</html>
